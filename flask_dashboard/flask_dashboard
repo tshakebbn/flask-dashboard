@@ -1,0 +1,89 @@
+#!/usr/bin/python
+"""Flask Dashboard
+
+**File** flask_dashboard
+
+This script will deploy a flask webserver to host a dashboard. This dashboard will display
+information and functionality for the user.
+
+**Author** [organization]
+
+**Author** [name] (optional)
+
+**[Unique category]** [designation]
+
+**Notifications:**
+
+[distribution designation]
+
+[other designations]
+
+**Copyright** [year] [organization]
+
+"""
+
+import traceback
+import os
+import sys
+import argparse
+import ConfigParser
+import flask
+import appdirs
+
+DASHBOARD = flask.Flask(__name__, static_folder='./static', template_folder='./templates')
+
+@DASHBOARD.route('/')
+def index_redirect():
+    """Main entry point to webpage
+
+	Returns:
+		displays dashboard homepage
+
+	"""
+
+    return flask.render_template('dashboard.html')
+
+@DASHBOARD.route('/index')
+def index():
+    """Dashboard homepage
+
+    Returns:
+        displays dashboard homepage
+
+    """
+
+    return flask.render_template('dashboard.html')
+
+def setup_argparser():
+    """ Creates flask dashboard argument parser
+
+    Returns
+        parser (obj):   argparse object
+
+    """
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-v", "--version", action="version", version="Flask Dashboard 1.0.0.0")
+    return parser
+
+def main():
+    """Main function if ran standalone"""
+
+    args = setup_argparser().parse_args()
+
+    try:
+        # get config file arguments
+        config = ConfigParser.RawConfigParser()
+        config_directory = appdirs.user_config_dir('flask_dashboard')
+        config_file = os.path.join(config_directory, 'flask_dashboard.conf')
+        config.read(config_file)
+    except IOError:
+        traceback.print_exc()
+        sys.exit("Aborting. Unable to find config file")
+    else:
+        pass
+
+    DASHBOARD.run(port=config.get('options', 'port'), host=config.get('options', 'host'))
+
+if __name__ == '__main__':
+    main()
