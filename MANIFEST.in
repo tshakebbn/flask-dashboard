@@ -1,1 +1,1 @@
-include config/python_app.conf
+include config/flask_dashboard.conf
