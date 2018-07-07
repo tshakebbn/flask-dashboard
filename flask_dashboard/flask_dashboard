@@ -29,6 +29,7 @@ import argparse
 import ConfigParser
 import flask
 import appdirs
+import pkg_resources
 
 DASHBOARD = flask.Flask(__name__, static_folder='./static', template_folder='./templates')
 
@@ -66,10 +67,23 @@ def setup_argparser():
     parser.add_argument("-v", "--version", action="version", version="Flask Dashboard 1.0.0.0")
     return parser
 
+def configure():
+    """Configures config directory and file"""
+
+    config_directory = appdirs.user_config_dir('flask_dashboard')
+    config_file = os.path.join(config_directory, 'flask_dashboard.conf')
+    if not os.path.isfile(config_file):
+        source = pkg_resources.resource_stream(__name__, '../config/flask_dashboard.conf')
+        if not os.path.isdir(config_directory):
+            os.makedirs(config_directory)
+        with open(config_file, 'w') as destination:
+            destination.writelines(source)
+
 def main():
     """Main function if ran standalone"""
 
     args = setup_argparser().parse_args()
+    configure()
 
     try:
         # get config file arguments
