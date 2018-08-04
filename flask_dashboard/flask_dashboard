@@ -108,6 +108,9 @@ def main():
     except ConfigParser.NoSectionError:
         traceback.print_exc()
         sys.exit("Aborting. Missing section in config file")
+    except ConfigParser.NoOptionError:
+        traceback.print_exc()
+        sys.exit("Aborting. Missing option in config file")
     else:
         pass
 
