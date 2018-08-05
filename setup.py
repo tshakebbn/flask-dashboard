@@ -42,5 +42,5 @@ setuptools.setup(
     packages=['flask_dashboard', 'config'],
     long_description=read('README.md'),
     include_package_data=True,
-    scripts=['flask_dashboard/flask_dashboard'],
+    scripts=['flask_dashboard/example_flask_dashboard'],
 )
