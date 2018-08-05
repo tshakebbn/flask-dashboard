@@ -153,3 +153,10 @@
     </div>
 </div>
 {% endblock %}
+{% block script %}
+    <script>
+        $().ready(function(){
+            demo.initGoogleMaps();
+        });
+    </script>
+{% endblock %}
