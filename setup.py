@@ -34,7 +34,7 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setuptools.setup(
-    name="flask_dashboard",
+    name="example_flask_dashboard",
     version="1.0.0.0",
     author="[organization]",
     description=("An example flask dashboard template"),
