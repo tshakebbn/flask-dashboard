@@ -55,6 +55,83 @@ def index():
 
     return flask.render_template('dashboard.html')
 
+@DASHBOARD.route('/dashboard.html')
+def dashboard():
+    """Dashboard homepage
+
+    Returns:
+        displays dashboard homepage
+
+    """
+
+    return flask.render_template('dashboard.html')
+
+@DASHBOARD.route('/icons.html')
+def icons():
+    """Icons page
+
+    Returns:
+        displays icons page
+
+    """
+
+    return flask.render_template('icons.html')
+
+@DASHBOARD.route('/maps.html')
+def maps():
+    """Maps page
+
+    Returns:
+        displays maps page
+
+    """
+
+    return flask.render_template('maps.html')
+
+@DASHBOARD.route('/notifications.html')
+def notifications():
+    """Notifications page
+
+    Returns:
+        displays notifications page
+
+    """
+
+    return flask.render_template('notifications.html')
+
+@DASHBOARD.route('/table.html')
+def table():
+    """Table page
+
+    Returns:
+        displays table page
+
+    """
+
+    return flask.render_template('table.html')
+
+@DASHBOARD.route('/typography.html')
+def typography():
+    """Typography page
+
+    Returns:
+        displays typography page
+
+    """
+
+    return flask.render_template('typography.html')
+
+@DASHBOARD.route('/user.html')
+def user():
+    """User page
+
+    Returns:
+        displays user page
+
+    """
+
+    return flask.render_template('user.html')
+
 def setup_argparser():
     """ Creates flask dashboard argument parser
 
