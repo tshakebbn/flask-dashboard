@@ -1,1 +1,3 @@
 include config/flask_dashboard.conf
+recursive-include flask_dashboard/templates *
+recursive-include flask_dashboard/static *
